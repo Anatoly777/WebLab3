@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: 1
+  Date: 19.10.2021
+  Time: 19:56
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+    <h:outputText styleClass="student_name" value="Лаптев Анатолий :: Группа P3213 :: Вариант 13214"/>
+    <br/>
+    <h:outputText id="clock" styleClass="clock" value="Текущее время: #{clockPer8.dateTime}"/>
+    <br/>
+    <p:poll interval="8" listener="#{clockPer8.updateTime}" update="clock"> </p:poll>
+    <br/>
+    <h:form styleClass="form">
+        <h:commandButton styleClass="button" id="to_main_page_button" action="mainPage"
+                         value="SHOW TARGET"/>
+    </h:form>
+    <h:outputStylesheet library="css" name="index.css"/>
+</h:body>
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: 1
+  Date: 19.10.2021
+  Time: 19:56
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+
+<h:head>
+</h:head>
+
+<h:body onload="canvas_init()">
+    <p:growl id = "messages"/>
+    <div id = "image">
+        <canvas id="target_canvas" width="400" height="400"/>
+            <h:form id = "canvas_form" style="display: none">
+                <h:inputText styleClass="canvas_x" id = "canvas_x" value="#{canvasController.x}">
+                    <p:ajax update="canvas_x"/>
+                </h:inputText>
+                <h:inputText styleClass="canvas_y" id = "canvas_y" value="#{canvasController.y}">
+                    <p:ajax update="canvas_y"/>
+                </h:inputText>
+                <h:inputText id="canvas_r" value="#{dataForm.r}">
+                    <p:ajax update="canvas_r"/>
+                </h:inputText>
+                <h:commandButton id = "canvas_button" type="submit" action="#{canvasController.mouseClick}">
+                    <p:ajax update="hits"  oncomplete="render_canvas(get_r())"/>
+                </h:commandButton>
+            </h:form>
+    </div>
+    <h:form styleClass="shoot_form" id="form">
+        <div class="data">
+            <p:outputLabel for="@next" value="X:"/>
+            <p:spinner styleClass="x_input" id="step" value="#{dataForm.x}" stepFactor="0.5" min="-4" max="4">
+                <f:validator validatorId="validatorX"/>
+            </p:spinner>
+        </div>
+        <div class="data">
+            <p:outputLabel styleClass="y_input_text" for="@next" value="Y:"/>
+            <h:inputText styleClass="y_input" id="y_input" value="#{dataForm.y}">
+                <f:validator validatorId="validatorY"/>
+            </h:inputText>
+        </div>
+        <!-- <h:panelGroup styleClass="y_checkboxes" id="y_checkboxes">
+
+            <p:outputLabel value="Y:"/>
+            <p:selectBooleanCheckbox value="#{dataForm.y0}" itemLabel="-4">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(0)}"/>
+            </p:selectBooleanCheckbox>
+            <p:selectBooleanCheckbox value="#{dataForm.y1}" itemLabel="-3">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(1)}"/>
+            </p:selectBooleanCheckbox>
+            <p:selectBooleanCheckbox value="#{dataForm.y2}" itemLabel="-2">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(2)}"/>
+            </p:selectBooleanCheckbox>
+            <p:selectBooleanCheckbox value="#{dataForm.y3}" itemLabel="-1">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(3)}"/>
+            </p:selectBooleanCheckbox>
+            <p:selectBooleanCheckbox value="#{dataForm.y4}" itemLabel="0">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(4)}"/>
+            </p:selectBooleanCheckbox>
+            <p:selectBooleanCheckbox value="#{dataForm.y5}" itemLabel="1">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(5)}"/>
+            </p:selectBooleanCheckbox>
+            <p:selectBooleanCheckbox value="#{dataForm.y6}" itemLabel="2">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(6)}"/>
+            </p:selectBooleanCheckbox>
+            <p:selectBooleanCheckbox value="#{dataForm.y7}" itemLabel="3">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(7)}"/>
+            </p:selectBooleanCheckbox>
+            <p:selectBooleanCheckbox value="#{dataForm.y8}" itemLabel="4">
+                <p:ajax update="y_checkboxes" listener="#{dataForm.revY(8)}"/>
+            </p:selectBooleanCheckbox>
+
+
+        </h:panelGroup>
+-->
+        <div class="data">
+            <h:commandLink id="comandLink" onclick="get_link()" value="Изменение R"/><br/>
+            <p:outputLabel for="@next" value="R:"/>
+            <p:spinner styleClass="r_input" id="step1" value="#{dataForm.r}" stepFactor="0.5" min="1" max="3">
+                <f:validator validatorId="validatorR"/>
+                <p:ajax update=":canvas_form:canvas_r" oncomplete="render_canvas(get_r())"/>
+            </p:spinner>
+
+        </div>
+        <h:commandButton styleClass="shoot_button" type="submit" value="SHOT" action = "#{mainPage.submit}">
+
+        </h:commandButton>
+    </h:form>
+    <h:form>
+        <h:commandButton styleClass="return_button" id="to_start_page_button" action="startPage"
+                         value="BACK TO CLOCK"/>
+    </h:form>
+    <p:dataTable id="hits" var="hit" value="#{history.history}">
+        <p:column headerText="X">
+            <h:outputText value="#{hit.x}"/>
+        </p:column>
+        <p:column headerText="Y">
+            <h:outputText value="#{hit.y}"/>
+        </p:column>
+        <p:column headerText="R">
+            <h:outputText value="#{hit.r}"/>
+        </p:column>
+        <p:column headerText="There is a breakout!">
+            <h:outputText value="#{hit.hit}"/>
+        </p:column>
+    </p:dataTable>
+    <h:outputScript library="js" name="canvasController.js"/>
+    <h:outputStylesheet library="css" name="shoot.css"/>
+
+</h:body>
+</html>
