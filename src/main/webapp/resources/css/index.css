@@ -1,0 +1,54 @@
+/* CSS */
+.button {
+    font-size: 18px;
+    font-weight: 300;
+    color: #fff;
+    cursor: pointer;
+    padding: 20px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    text-shadow: 0 1px 0 #312c2c;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 80%;
+    width: 45%;
+    background-image: linear-gradient(to right, #169ed6, #3479f1, #1fbdf3, #4f8de6);
+    box-shadow: 0 4px 15px 0 rgba(52, 120, 222, 0.75);
+}
+
+.button:active {
+    background-color: #006AE8;
+}
+
+.button:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.student_name {
+    font-family: "Courier New", sans-serif;
+    font-size: 50px;
+}
+
+.clock{
+    font-family: "Courier New", sans-serif;
+    font-size: 40px;
+}
+body {
+    display:inline-flex;
+    flex-direction:column;
+    justify-content:right;
+    min-height:100vh;
+}
+html {
+    background-color: aquamarine;
+}

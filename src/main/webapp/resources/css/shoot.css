@@ -1,0 +1,126 @@
+body {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-height:100vh;
+}
+
+.shoot_button, .return_button {
+    align-items: center;
+
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+    box-sizing: border-box;
+    color: #fbf;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    font-family: "Courier New", sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: none;
+    transition: color .13s ease-in-out, background .13s ease-in-out, opacity .13s ease-in-out, box-shadow .13s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 600px;
+}
+.x_input {
+    display: inline-block;
+    width: 450px;
+    font-size: 24px;
+    margin: 10px auto;
+    font-family: "Courier New", sans-serif;
+}
+
+#commandLink {
+    font-size: 30px;
+    margin: 10px auto;
+    font-family: "Courier New", sans-serif;
+}
+
+.y_input {
+    display: inline-block;
+    width: 450px;
+    font-size: 24px;
+    margin: 10px auto;
+    font-family: "Courier New", sans-serif;
+}
+.y_checkboxes div {
+    display: inline-block;
+    width: 50px;
+    font-size: 24px;
+    margin: 10px auto;
+    font-family: "Courier New", sans-serif;
+}
+.shoot_form label {
+    display: inline-block;
+    font-size: 24px;
+    margin: 10px auto;
+    font-family: "RM Neue", sans-serif;
+}
+.return_button{
+    background-color: yellow;
+    height: 50px;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+.r_input {
+    display: inline-block;
+    width: 450px;
+    font-size: 24px;
+    margin: 10px auto;
+    font-family: "Courier New", sans-serif;
+}
+.shoot_button{
+    height: 50px;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: linear-gradient(to right, #169ed6, #3479f1, #1fbdf3, #4f8de6);
+    box-shadow: 0 4px 15px 0 rgba(52, 120, 222, 0.75);
+}
+
+.shoot_button:hover{
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+
+.shoot_form{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-family: "Courier New", sans-serif;
+
+}
+div#image{
+    background-color: white;
+    display: block;
+    margin: auto;
+    padding: 10px;
+}
+
+html {
+    background-color: aquamarine;
+}
+
+div.data {
+    padding: 20px;
+    background: #009e79;
+    border-radius: 20px;
+}
+
+canvas { border: 1px solid black; }
